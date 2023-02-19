@@ -4,25 +4,39 @@
         <meta charset="utf-8">
         <title>przypominanie js</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2f844fe2d4.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="container">
-            <h3 class="text-center">
-                Welcome to the game
-                <span class="label label-default">Rock</span>
-                <span class="label label-info">Paper</span>
-                <span class="label label-danger">Scissors</span>
-            </h3>
-            <div id="js-newGameElement">
-                <div class="row text-center">
-                    <button id="js-newGameButton" class="btn btn-default"> new game </button>
-                </div>
+        <div id="main-container">
+            <div id="header">
+                <h1>welcome to the game </h1>
+                <i class="icon-header fa-solid fa-hand-back-fist"></i>
+                <i class="icon-header fa-solid fa-hand"></i>
+                <i class="icon-header fa-solid fa-hand-scissors"></i>
             </div>
-            <div id="js-playerPickElement">
-                <div class="row text-center">
-                    <button id="js-playerPick_rock" class="btn"> Rock </button>
-                    <button id="js-playerPick_paper" class="btn"> Paper </button>
-                    <button id="js-playerPick_scissors" class="btn"> Scissors </button>
+            <div id="game-container">
+                <div id="newGameSection">
+                    <button id="newGameBtn">nowa gra</button>
+                </div>
+                <div id="pickElement-container">
+                    <i class="pickElement-btn fa-solid fa-hand-back-fist"></i>
+                    <i class="pickElement-btn fa-solid fa-hand"></i>
+                    <i class="pickElement-btn fa-solid fa-hand-scissors"></i>
+                </div>
+                <div id="score-container">
+                    <div id="playerScore-container">
+                        <p id="playerScore">0</p>
+                        <p id="'playerName">John</p>
+                        <p id="'playerPickedElement">kamien</p>
+                    </div>
+                    <div id="playerScore-container">
+                        <p id="playerScore">0</p>
+                        <p>Computer</p>
+                        <p id="'playerPickedElement">nozyce</p>
+                    </div>
                 </div>
             </div>
         </div>

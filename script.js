@@ -1,12 +1,40 @@
-var addButton = document.getElementById('addElem');
+var newGameElem = document.getElementById('newGameSection');
+var newGameButton = document.getElementById('newGameBtn');
+var pickElementContainer = document.getElementById('pickElement-container');
+var scoreContainer = document.getElementById('score-container');
+var pickBtn = document.getElementsByClassName('pickElement-btn');
 
-addButton.addEventListener('click', function(){
-    var list = document.getElementsByTagName('ul');
-    var listLenght = list.list.children.length;
+var gameState = 'notStarted';
+var player = {
+    name: '',
+    score: 0
+};
+var computer = {
+    score: 0
+}
 
-    var newElem = document.createElement('li');
-    newElem.innerHTML = 'item ' + listLenght;
-    list[0].appendChild(newElem);
+function setGame(gameState){
+    switch(gameState){
+        case 'started': 
+            newGameElem.style.display = 'none';
+            pickElementContainer.style.display = 'block';
+            scoreContainer.style.display = 'block';
+            break;
 
-});
+        case 'ended':
+            newGameButton.innerHTML = 'jeszcze raz';
+            pickElementContainer.style.display = 'none';
+            scoreContainer.style.display = 'none';
+        
+        case 'notStarted':
+        default: 
+            pickElementContainer.style.display = 'none';
+            scoreContainer.style.display = 'none';
+    }   
+}
 
+setGame('notStarted');
+
+newGameButton.addEventListener('click', function startNewGame(){
+    setGame('started');
+})
