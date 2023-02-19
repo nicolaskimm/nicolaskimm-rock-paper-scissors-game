@@ -59,13 +59,20 @@ body {
     color:rgb(199, 133, 144)
 }
 
-.pickElement-btn {
-    font-size: 50px;
-    margin: 0 50px;
+.pickElement-button {
+    background: none;
+    border: none;
+    margin: 0;
+    color:rgb(167, 54, 73);
 }
 
-.pickElement-btn:hover {
-    transition: 0.5s;
+.pickElement-button > * {
+    font-size: 50px;
+    margin: 0 20px;
+}
+
+.pickElement-button > *:hover {
+    transition: 0.3s;
     color:rgb(214, 197, 42);
 }
 
