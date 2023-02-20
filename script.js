@@ -8,6 +8,9 @@ var pickedRock = document.getElementById('pickElement-rock');
 var pickedPaper = document.getElementById('pickElement-paper');
 var pickedScissors = document.getElementById('pickElement-scissors');
 var firstParOFClassName = 'fa-solid';
+var rockClass = 'fa-hand-back-fist';
+var paperClass = 'fa-hand';
+var scissorsClass = 'fa-hand-scissors';
 
 
 
@@ -61,16 +64,13 @@ function playerPick(e){
     playerScoreContainer.appendChild(newElem);
 
     computerPick();
+    checkScore();
 }
 
 function computerPick(){
     var possiblePicks = ['rock', 'paper', 'scissors'];
     var pickElem = possiblePicks[Math.floor(Math.random()*3)];
     var newElem = document.createElement('i');
-    var rockClass = 'fa-hand-back-fist';
-    var paperClass = 'fa-hand';
-    var scissorsClass = 'fa-hand-scissors';
-
     
     switch(pickElem){
         case 'rock':
@@ -88,4 +88,31 @@ function computerPick(){
 
     computerScoreContainer.appendChild(newElem);
 }
+
+function checkScore(){
+    var playerPick = playerScoreContainer.lastChild.getAttribute('class').substr(9, 100);
+    var computerPick = computerScoreContainer.lastChild.getAttribute('class').substr(9, 100);
+
+    var winner = 'player';
+
+    if (playerPick === computerPick){
+        winner = 'none';
+    } else if (
+        computerPick === rockClass && playerPick === scissorsClass ||
+        computerPick === scissorsClass && playerPick === paperClass ||
+        computerPick === paperClass && playerPick === rockClass){
+            winner = 'computer';
+    } 
+
+    switch(winner){
+        case 'player':
+            player.score++;
+            break;
+
+        case 'computer':
+            computer.score++;
+            break;
+    }
+}
+
 
