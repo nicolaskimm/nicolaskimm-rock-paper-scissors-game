@@ -9,6 +9,8 @@ var pickedPaper = document.getElementById('pickElement-paper');
 var pickedScissors = document.getElementById('pickElement-scissors');
 var playerScore = document.getElementById('playerScore');
 var computerScore = document.getElementById('computerScore');
+var playerScoreIcon = document.getElementById('playerScore-icon');
+var computerScoreIcon = document.getElementById('computerScore-icon');
 var firstParOFClassName = 'fa-solid';
 var rockClass = 'fa-hand-back-fist';
 var paperClass = 'fa-hand';
@@ -64,40 +66,34 @@ document.addEventListener('click', function(e){
 
 function playerPick(e){
     var nameOfClass = e.target.getAttribute('class');
-    var newElem = document.createElement('i');
     var secondPartOfClassname = nameOfClass.substr(9, 100);
-    newElem.classList.add(firstParOFClassName, secondPartOfClassname);
-    playerScoreContainer.appendChild(newElem);
+    playerScoreIcon.setAttribute('class', '');
+    playerScoreIcon.classList.add(firstParOFClassName, secondPartOfClassname);
 
     computerPick();
     checkScore();
     setGamePoints();
     checkForWinner();
-
-    setTimeout(playerScoreContainer.removeChild(playerScoreContainer.lastChild), 2000);
-    computerScoreContainer.removeChild(computerScoreContainer.removeChild(computerScoreContainer.lastChild), 2000);
 }
 
 function computerPick(){
+    computerScoreIcon.setAttribute('class', '');
     var possiblePicks = ['rock', 'paper', 'scissors'];
     var pickElem = possiblePicks[Math.floor(Math.random()*3)];
-    var newElem = document.createElement('i');
-    
+
     switch(pickElem){
         case 'rock':
-            newElem.classList.add(firstParOFClassName, rockClass);
+            computerScoreIcon.classList.add(firstParOFClassName, rockClass);
             break;
 
         case 'paper':
-            newElem.classList.add(firstParOFClassName, paperClass);
+            computerScoreIcon.classList.add(firstParOFClassName, paperClass);
             break;
 
         case 'scissors':
-            newElem.classList.add(firstParOFClassName, scissorsClass);
+            computerScoreIcon.classList.add(firstParOFClassName, scissorsClass);
             break;
     }
-
-    computerScoreContainer.appendChild(newElem);
 }
 
 function checkScore(){
