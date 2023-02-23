@@ -11,6 +11,7 @@ var playerScore = document.getElementById('playerScore');
 var computerScore = document.getElementById('computerScore');
 var playerScoreIcon = document.getElementById('playerScore-icon');
 var computerScoreIcon = document.getElementById('computerScore-icon');
+var playerName = document.getElementById('playerName');
 var firstParOFClassName = 'fa-solid';
 var rockClass = 'fa-hand-back-fist';
 var paperClass = 'fa-hand';
@@ -28,6 +29,7 @@ var computer = {
 function setGame(){
     switch(gameState){
         case 'started': 
+            playerName = player.name;
             newGameElem.style.display = 'none';
             pickElementContainer.style.display = 'block';
             scoreContainer.style.display = 'block';
@@ -52,10 +54,16 @@ function setGame(){
 setGame();
 
 newGameButton.addEventListener('click', function startNewGame(){
+    if (newGameButton.innerHTML === 'nowa gra'){
+        var name = prompt('Enyer your name: ');
+        playerName.innerHTML = name;
+    }
+
     gameState = 'started';
     player.score = computer.score = 0;
     setGamePoints();
     setGame();
+    
 })
 
 document.addEventListener('click', function(e){
@@ -97,14 +105,13 @@ function computerPick(){
 }
 
 function checkScore(){
-    var playerPick = playerScoreContainer.lastChild.getAttribute('class').substr(9, 100);
-    var computerPick = computerScoreContainer.lastChild.getAttribute('class').substr(9, 100);
+    var playerPick = playerScoreIcon.getAttribute('class').substr(9, 100);
+    var computerPick = computerScoreIcon.getAttribute('class').substr(9, 100);
 
     var winner = 'player';
 
     if (playerPick === computerPick){
         winner = 'none';
-        alert('remis');
     } else if (
         computerPick === rockClass && playerPick === scissorsClass ||
         computerPick === scissorsClass && playerPick === paperClass ||
